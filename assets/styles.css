@@ -272,14 +272,27 @@ ul.plain li { margin-bottom: 4px; }
 [class$="-grid"] > * { min-width: 0; }
 
 /* polaroid collage (built in CSS so nothing clips) */
-.polaroids { position: relative; aspect-ratio: 1 / 1.08; width: 100%; max-width: 460px; justify-self: center; }
-.pol { position: absolute; margin: 0; background: #f4f1ea; padding: 12px 12px 54px; box-shadow: 0 18px 40px rgba(0,0,0,.28); transition: transform .4s; }
-.pol img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.pol::before {
-  content: ""; position: absolute; top: -14px; left: 50%; width: 46%; height: 30px; margin-left: -23%;
-  background: rgba(214, 196, 160, .88); box-shadow: 0 1px 3px rgba(0,0,0,.12);
+.polaroids { position: relative; aspect-ratio: 1 / 1.1; width: 100%; max-width: 470px; justify-self: center; }
+.pol {
+  position: absolute; margin: 0;
+  background: #fbf8f2 linear-gradient(160deg, rgba(255,255,255,.7), rgba(0,0,0,.035));
+  padding: 4.2% 4.2% 15%;
+  box-shadow: 0 1px 1px rgba(0,0,0,.08), 0 6px 12px rgba(30,15,8,.18), 0 26px 50px rgba(30,15,8,.32);
+  transition: transform .5s cubic-bezier(.2,.7,.2,1);
 }
-.pol-1 { width: 52%; height: 70%; left: 2%; top: 6%; transform: rotate(-5deg); }
-.pol-2 { width: 58%; height: 76%; right: 2%; top: 18%; transform: rotate(4deg); }
-.pol-1 img { object-position: 30% center; }
-.pol:hover { transform: rotate(0deg) scale(1.03); z-index: 2; }
+.pol img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; filter: saturate(.92) contrast(1.02); }
+.pol figcaption {
+  position: absolute; left: 0; right: 0; bottom: 3.4%; text-align: center;
+  font: italic 700 13px var(--accent); letter-spacing: .06em; text-transform: lowercase; color: #7a5c4c;
+}
+.pol::before {
+  content: ""; position: absolute; top: -13px; left: 50%; width: 38%; height: 28px; transform: translateX(-50%) rotate(-2deg);
+  background: linear-gradient(90deg, rgba(232,216,186,.82), rgba(214,194,158,.86));
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  clip-path: polygon(0 8%, 4% 0, 9% 10%, 14% 2%, 20% 9%, 27% 1%, 34% 8%, 41% 0, 48% 9%, 56% 2%, 63% 10%, 70% 1%, 77% 9%, 84% 2%, 91% 10%, 96% 1%, 100% 8%,
+    100% 92%, 96% 100%, 90% 91%, 84% 99%, 77% 90%, 70% 98%, 63% 91%, 56% 100%, 48% 92%, 41% 99%, 34% 90%, 27% 98%, 20% 91%, 13% 99%, 7% 90%, 3% 98%, 0 92%);
+}
+.pol-1 { width: 54%; left: 1%; top: 2%; transform: rotate(-6deg); }
+.pol-2 { width: 56%; right: 1%; top: 22%; transform: rotate(4deg); z-index: 1; }
+.pol:hover { transform: rotate(0deg) translateY(-6px) scale(1.03); z-index: 3; }
+.pol-1 figcaption { text-align: left; padding-left: 9%; }
